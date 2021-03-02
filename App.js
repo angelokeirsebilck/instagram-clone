@@ -17,8 +17,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import LandingScreen from './components/auth/Landing';
 import RegisterScreen from './components/auth/Register';
+import LoginScreen from './components/auth/Login';
 import MainScreen from './components/Main';
 import AddScreen from './components/main/Add';
+import SaveScreen from './components/main/Save';
 
 import {
     API_KEY,
@@ -94,6 +96,11 @@ export default function App() {
                             component={RegisterScreen}
                             options={{ headerShown: false }}
                         />
+                        <Stack.Screen
+                            name='Login'
+                            component={LoginScreen}
+                            options={{ headerShown: false }}
+                        />
                     </Stack.Navigator>
                 </NavigationContainer>
             </Provider>
@@ -110,6 +117,7 @@ export default function App() {
                         options={{ headerShown: false }}
                     />
                     <Stack.Screen name='Add' component={AddScreen} />
+                    <Stack.Screen name='Save' component={SaveScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
         </Provider>
