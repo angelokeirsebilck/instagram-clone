@@ -28,7 +28,7 @@ const Register = () => {
     };
 
     return (
-        <View>
+        <View style={styles.container}>
             <TextInput placeholder='name' onChangeText={(name) => setName(name)} />
             <TextInput placeholder='angelo@telenet.be' onChangeText={(email) => setEmail(email)} />
             <TextInput secureTextEntry onChangeText={(password) => setPassword(password)} />
@@ -36,5 +36,9 @@ const Register = () => {
         </View>
     );
 };
-
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 100,
+    },
+});
 export default Register;
