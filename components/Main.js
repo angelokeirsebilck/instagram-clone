@@ -4,19 +4,18 @@ import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchUser } from '../redux/actions/index';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 import FeedScreen from '../components/main/Feed';
 import ProfileScreen from '../components/main/Profile';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { event } from 'react-native-reanimated';
 
 const EmptyScreen = () => {
     return null;
 };
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 const Main = ({ fetchUser, user }) => {
     useEffect(() => {
@@ -28,7 +27,8 @@ const Main = ({ fetchUser, user }) => {
             // tabBarOptions={{
             //     activeTintColor: 'red',
             // }}
-            initialRouteName='Feed'>
+            initialRouteName='Feed'
+            labeled={false}>
             <Tab.Screen
                 name='Feed'
                 component={FeedScreen}
