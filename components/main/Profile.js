@@ -11,8 +11,8 @@ const Profile = ({ user }) => {
     const [currentUser, setCurrentser] = useState(null);
 
     useEffect(() => {
-        setCurrentser(user.currentUser);
         setUserPosts(user.posts);
+        setCurrentser(user.currentUser);
     }, []);
 
     const logOut = () => {
@@ -27,11 +27,15 @@ const Profile = ({ user }) => {
             });
     };
 
+    if (currentUser === null) {
+        return <View></View>;
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.containerInfo}>
-                {currentUser && <Text>{currentUser.name}</Text>}
-                {currentUser && <Text>{currentUser.email}</Text>}
+                <Text>{currentUser.name}</Text>
+                <Text>{currentUser.email}</Text>
 
                 <Button title='Log Out' onPress={() => logOut()} />
             </View>
@@ -57,7 +61,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     containerInfo: {
-        margin: 40,
+        margin: 20,
     },
     containerGallery: {
         flex: 1,

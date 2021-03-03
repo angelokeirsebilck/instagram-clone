@@ -20,6 +20,7 @@ import RegisterScreen from './components/auth/Register';
 import LoginScreen from './components/auth/Login';
 import MainScreen from './components/Main';
 import AddScreen from './components/main/Add';
+import ProfileSearchScreen from './components/main/ProfileSearch';
 import SaveScreen from './components/main/Save';
 
 import {
@@ -111,12 +112,9 @@ export default function App() {
         <Provider store={store}>
             <NavigationContainer>
                 <Stack.Navigator initialRouteName='Main'>
-                    <Stack.Screen
-                        name='Main'
-                        component={MainScreen}
-                        options={{ headerShown: false }}
-                    />
+                    <Stack.Screen name='Main' component={MainScreen} />
                     <Stack.Screen name='Add' component={AddScreen} />
+                    <Stack.Screen name='ProfileSearch' component={ProfileSearchScreen} />
                     <Stack.Screen name='Save' component={SaveScreen} />
                 </Stack.Navigator>
             </NavigationContainer>

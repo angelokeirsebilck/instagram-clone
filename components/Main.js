@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { connect } from 'react-redux';
-import { fetchUser, fetchUserPosts } from '../redux/actions/index';
+import { fetchUser, fetchUserPosts, fetchUserFollowing } from '../redux/actions/index';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 import FeedScreen from '../components/main/Feed';
 import ProfileScreen from '../components/main/Profile';
+import SearchScreen from '../components/main/Search';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -17,10 +18,11 @@ const EmptyScreen = () => {
 
 const Tab = createMaterialBottomTabNavigator();
 
-const Main = ({ fetchUser, fetchUserPosts, user }) => {
+const Main = ({ fetchUser, fetchUserPosts, fetchUserFollowing, user }) => {
     useEffect(() => {
         fetchUser();
         fetchUserPosts();
+        fetchUserFollowing();
     }, []);
 
     return (
@@ -37,6 +39,15 @@ const Main = ({ fetchUser, fetchUserPosts, user }) => {
                     tabBarIcon: ({ color, size }) => {
                         return <MaterialCommunityIcons name='home' color={color} size={26} />;
                     },
+                }}
+            />
+            <Tab.Screen
+                name='Search'
+                component={SearchScreen}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name='magnify' color={color} size={26} />
+                    ),
                 }}
             />
             <Tab.Screen
@@ -80,4 +91,4 @@ const mapStateToProps = (state) => ({
     user: state.user,
 });
 
-export default connect(mapStateToProps, { fetchUser, fetchUserPosts })(Main);
+export default connect(mapStateToProps, { fetchUser, fetchUserPosts, fetchUserFollowing })(Main);
