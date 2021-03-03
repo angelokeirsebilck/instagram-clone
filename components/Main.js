@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { connect } from 'react-redux';
-import { fetchUser } from '../redux/actions/index';
+import { fetchUser, fetchUserPosts } from '../redux/actions/index';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
@@ -17,9 +17,10 @@ const EmptyScreen = () => {
 
 const Tab = createMaterialBottomTabNavigator();
 
-const Main = ({ fetchUser, user }) => {
+const Main = ({ fetchUser, fetchUserPosts, user }) => {
     useEffect(() => {
         fetchUser();
+        fetchUserPosts();
     }, []);
 
     return (
@@ -79,4 +80,4 @@ const mapStateToProps = (state) => ({
     user: state.user,
 });
 
-export default connect(mapStateToProps, { fetchUser })(Main);
+export default connect(mapStateToProps, { fetchUser, fetchUserPosts })(Main);

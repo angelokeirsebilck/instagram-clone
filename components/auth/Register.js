@@ -36,9 +36,11 @@ const Register = () => {
         </View>
     );
 };
+
 const styles = StyleSheet.create({
     container: {
         marginTop: 100,
     },
 });
+
 export default Register;
